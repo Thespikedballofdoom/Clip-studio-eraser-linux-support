@@ -1,0 +1,14 @@
+# This is a Systemd --user service that helps run KT. You probably need to be in the input group, but I don't know for sure. I used to run KT as root.
+# Slap it in /etc/systemd/user
+[Unit]
+Description=kt runner
+After=graphical-session.target
+Wants=graphical-session.target
+
+[Service]
+# I thought this crap needed root...
+ExecStart=/d/p2/kt24 "Optical Mecha forward"
+Restart=always
+
+[Install]
+WantedBy=graphical-session.target
